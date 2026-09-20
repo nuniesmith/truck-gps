@@ -16,6 +16,8 @@ Repository: [nuniesmith/truck-gps](https://github.com/nuniesmith/truck-gps).
 - [src/pi/README.md](src/pi/README.md): Run the controller simulation, tests, configuration and example service.
 - [docs/pi-setup.md](docs/pi-setup.md): Selected fan, Pi review findings, software implementation and bench setup plan.
 - [docs/todo.md](docs/todo.md): Master planning, task tracking, measurements, and physical test records.
+- [docs/parts-list.md](docs/parts-list.md): Build inventory, exact faceplate fasteners, owned hardware and staged electronics list.
+- [docs/fit-test-v0.2.md](docs/fit-test-v0.2.md): Worksheet for the four prints currently underway, review findings and v0.4 prerequisites.
 - [docs/chats.md](docs/chats.md): Historical session logs (v0.1, v0.2, and v0.3) preserving earlier design rationale and prompts.
 - [src/stl/v0.3/README.md](src/stl/v0.3/README.md): Current V3.1 print sequence, hardware, assembly and OpenSCAD export instructions.
 - [docs/notes.md](docs/notes.md): Raw project ideas and planning notes.
@@ -54,7 +56,7 @@ The session directory `v0.3` contains the CAD revision named **V3.1**; these are
 
 ### First print checks
 
-Start with [the V3.1 printing instructions](src/stl/v0.3/README.md#print-now-without-the-gps) and record results in [the task checklist](docs/todo.md#1-truck-and-accessory-tests--next-work). Print the truck frame, depth gauges, M2 hardware coupons and accessory outlines before the full assembly. The GPS housing, rear ports, gasket overlap and power requirements remain provisional until verified on the actual unit.
+The four **v0.2** tests currently printing have their own [fit worksheet](docs/fit-test-v0.2.md), including nominal dimensions and what each part can establish. Record those results first. Then use [the V3.1 printing instructions](src/stl/v0.3/README.md#print-now-without-the-gps) for the newer external tabs, M2 hardware and accessory outlines; those features are not validated by v0.2. The GPS housing, rear ports, gasket overlap and power requirements remain provisional until verified on the actual unit.
 
 ---
 
@@ -101,7 +103,7 @@ The front of the mounting bracket will feature physical toggle switches/buttons 
 - **Main Power** (Master cut-off)
 - **GPS Power**
 - **Blue LEDs Power**
-- **Cooling Fan Power**
+- **Cooling Fan Auto / Boost** (the current control policy has no manual force-off mode)
 
 We have evaluated two power routing topologies for the back of the bracket:
 
@@ -190,5 +192,4 @@ Finish and record the v0.2 fit tests, then check the v0.3 mounting tabs and M2 h
    * Configure a Raspberry Pi Zero 2W with Tailscale and connect it to truck Starlink Wi-Fi.
    * Write a lightweight service in Python to process GPS NMEA data sentences.
    * Design a simple dashboard map using TomTom Orbis Web SDK / API.
-
 
