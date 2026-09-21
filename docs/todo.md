@@ -23,6 +23,17 @@ Baseline: **V3.1 fit prototype**, September 17, 2026. Checked items reflect work
 
 ---
 
+## Parts inventory
+
+Use [the complete parts list](parts-list.md) for quantities, faceplate hardware and future electronics.
+
+- [x] Record that the large dash bolts are already owned.
+- [ ] Check home stock for four M2 × 6 mm machine screws (0.4 mm pitch) and four plain M2 nuts (nominal 4 mm across flats, 1.6 mm thick).
+- [ ] Test the actual M2 pair in the v0.3 nut/bolt-cover coupons.
+- [ ] Measure the large bolt heads: v0.2 has 10.3 mm hex traps and v0.3 has 9.9 mm traps; transfer fit results only after checking this difference.
+- [ ] Inventory existing rubber, matching dash nuts/washers, cables and electronics before buying duplicates.
+- [ ] Finalize unresolved electronics ratings, connectors and carrier fasteners after measurements.
+
 ## 1. Truck and accessory tests — next work
 
 **In progress:** the user is printing the four v0.2 test files. Do not mark fit validation complete until results are recorded. The v0.3 tab/nut tests remain separate.
