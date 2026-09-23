@@ -1,0 +1,32 @@
+{
+  "cad_engine": "OpenSCAD 2021.01",
+  "rear_step_mm": {
+    "user_measured_rise": 10.0,
+    "old_height_at_back": 77.4,
+    "new_height_at_back": 87.4,
+    "front_height_unchanged": 98.0,
+    "front_width_unchanged": 164.5,
+    "depth_unchanged": 50.8
+  },
+  "intersections": {
+    "check_shelf_collision": {
+      "empty_intersection": true
+    },
+    "check_faceplate_collision": {
+      "empty_intersection": true
+    },
+    "check_airpods_collision": {
+      "empty_intersection": true
+    },
+    "check_charge_path": {
+      "empty_intersection": true
+    }
+  },
+  "method": [
+    "Insert/shelf and insert/faceplate checks shift the mating part 0.01 mm forward only during verification to separate intended contact.",
+    "AirPods stand-in has a 0.02 mm lift from the intended bottom contact; it is a nominal stadium approximation, not a scan of the real cased device.",
+    "Charging-path check uses a 20 mm long prism inset 0.2 mm from the opening; it does not model an actual USB-C elbow or cable bend.",
+    "OpenSCAD reports empty top-level objects with exit code 1; empty text without ERROR is the expected result."
+  ],
+  "scope": "Limited CAD intersection checks; no slicer, real-device, strength or installed-fit certification."
+}

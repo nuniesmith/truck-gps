@@ -1,6 +1,6 @@
 # Parts list and home inventory
 
-Updated September 20, 2026. Covers the current V3.1 mount and planned Pi Zero 2 W accessories. [Fit worksheet](fit-test-v0.2.md) · [Build tasks](todo.md) · [Pi plan](pi-setup.md) · [Mechanical instructions](../src/stl/v0.3/README.md)
+Updated September 22, 2026. Covers the v0.4 fit revision, retained V3.1 faceplate hardware and planned Pi Zero 2 W accessories. [Fit worksheet](fit-test-v0.2.md) · [Build tasks](todo.md) · [Pi plan](pi-setup.md) · [Mechanical instructions](../src/stl/v0.4/README.md)
 
 The large dash bolts are **already owned**. Small metric hardware needs checking at home. The rubber roll, AirPods/Latercase and PopSocket were supplied or described earlier; exact dimensions and suitability remain to verify. The GPS was previously not yet available. Other ownership is unconfirmed.
 
@@ -19,7 +19,7 @@ These are machine screws threaded into metal nuts, not self-tapping screws. M2.5
 
 The current source uses 2.2 mm screw-clearance holes, a 4.3 mm across-flats nut pocket and 1.8 mm nut-slot thickness. The nominal 6 mm screw passes through a 2.4 mm faceplate and 2.0 mm bearing wall, leaving about 1.6 mm of reach into the nut. There is very little spare depth behind the tip. **Do not substitute M2 × 8 mm or add washers without checking the stack.**
 
-Print `src/stl/v0.3/nut_fit_test.stl` and `bolt_cover_test.stl`, then test them together with the actual screw/nut pair. The nut coupon provides 4.1/4.3/4.5 mm across-flats choices. Check seating, engagement, tip clearance and repeated removal before the full print. These M2 tests are separate from the four v0.2 files currently printing.
+Print `src/stl/v0.3/nut_fit_test.stl` and `bolt_cover_test.stl`, then test them together with the actual screw/nut pair. The nut coupon provides 4.1/4.3/4.5 mm across-flats choices. Check seating, engagement, tip clearance and repeated removal before the full print. These M2 tests remain pending; the v0.2 truck and accessory tests do not validate them. v0.4 retains the same faceplate hardware.
 
 Dimension references: [M2 plain nut specification](https://www.accu.co.uk/hexagon-nuts/7884-HPN-M2-A2) and [example M2 × 6 pan-head screw specification](https://www.accu.co.uk/torx-pan-head-screws/475309-SHP-M2-6-V2-A2). The screw link illustrates dimensions, not a required brand, drive or seller.
 
@@ -27,10 +27,10 @@ Dimension references: [M2 plain nut specification](https://www.accu.co.uk/hexago
 
 | Item | Quantity | Specification / purpose | Status or decision |
 |---|---:|---|---|
-| Main printed insert | 1 | Current reference: `src/stl/v0.3/insert.stl` | Full print after fit corrections; v0.4 may replace it |
-| Removable printed faceplate | 1 | `src/stl/v0.3/faceplate.stl` | GPS overlap/gasket fit still provisional |
-| Accessory shelf | 1 | `src/stl/v0.3/shelf.stl` | Upward-facing AirPods tray and oval PopSocket seat; validate reach |
-| Fit coupons | 1 set per affected revision | Four v0.2 test files now; newer tab/nut/accessory coupons as needed | Tests are not installed parts |
+| Main printed insert | 1 | `src/stl/v0.4/insert_trial_10p8.stl` | Rear step raised 10 mm; select head size with the coupon before the long print |
+| Removable printed faceplate | 1 | `src/stl/v0.4/faceplate.stl` | V3.1 geometry retained; GPS overlap/gasket fit still provisional |
+| Accessory shelf | 1 | `src/stl/v0.4/shelf_wired_airpods.stl` | Tested AirPods collar section at 45° with bottom cable opening; oval PopSocket seat retained |
+| Fit coupons | 1 set per affected revision | Three v0.4 follow-up files plus existing v0.3 tab/nut coupons | Tests are not installed parts |
 | Filament | Slicer-estimated amount plus test allowance | Final material/profile must suit the printer and installed temperatures | Existing stock/type to confirm; final material not selected |
 | Large dash bolts | 4 | Existing hardware; measure head across flats, shank, pitch and under-head length | **Already owned**; do not buy replacements yet |
 | Matching dash nuts | 4 | Correct thread for the owned bolts; locking style subject to rear access | Check whether already owned; do not assume M6 or 1/4-inch interchangeability |
@@ -47,7 +47,7 @@ Dimension references: [M2 plain nut specification](https://www.accu.co.uk/hexago
 | Cable-hole edge protection | 1 per drilled cable opening | Grommet/bushing matched to actual hole, panel thickness and cable bundle | Select after connector routing is fixed |
 | Cased AirPods and PopSocket | 1 each | Actual accessories for fit checks | Already described; measure full installed cases/bases |
 
-**Large-bolt revision difference:** v0.2 uses a 10.3 mm across-flats head trap; v0.3 uses **9.9 mm**. Both have nominal 7 mm shank passages. Passing v0.2 does not establish v0.3 head fit. A 10 mm head should not be assumed to fit a 9.9 mm pocket, despite the inherited source comment mentioning 10 mm heads. We will size the pocket to your measured bolts.
+**Large-bolt fit:** the user reports that the v0.2 **7 mm shank passage fits** but the **10.3 mm head trap is too small**. v0.3 has a smaller 9.9 mm trap. v0.4 preserves the bore and supplies labeled 10.6, 10.8, 11.0, 11.4, 11.8 and 12.2 mm across-flats coupons. Its complete insert uses **10.8 mm as a trial**, not a measured final head size. Choose the smallest coupon that fully seats the actual head without force and still resists rotation; update `head_af` before the long print if needed.
 
 The shelf currently shares the two lower dash bolts through its tongues/L-tabs; there is no separate shelf-bolt purchase for that joint. The steel target uses the PopSocket's existing magnetic attachment; if a separate magnet is preferred, choose and test it first, then revise the recess. This location is for storage only.
 
@@ -64,7 +64,7 @@ The shelf currently shares the two lower dash bolts through its tongues/L-tabs; 
 | Noctua NF-A4x20 **5V PWM** | 1 | Four-pin, 40 × 40 × 20 mm; 22 mm with pads; 32 mm hole spacing; max 0.1 A at 5 V | Selected model; ownership/installed clearance to confirm |
 | Fan connector/extension | 1 usable harness | Preserve all four conductors if adding tach feedback | Package includes an extension, splitter and OmniJoin adapters; avoid duplicate purchases |
 | Fan mounting hardware | 1 set | Package includes fan screws and four anti-vibration mounts | Final printed carrier may require different hardware; lengths not finalized |
-| Removable fan/electronics carrier | 1 assembly | Future v0.4 print | Not designed yet; includes mounting and service access |
+| Removable fan/electronics carrier | 1 assembly | Future electronics revision; not included in the v0.4 fit files | Not designed yet; includes mounting and service access |
 | Pi/board standoffs, screws and nuts | 1 set per board | Match actual board holes, clearance and carrier design | **Size, length and count TBD**; faceplate M2 hardware is not a universal electronics kit |
 | DS18B20 temperature sensor | 1 initially | GPS-compartment measurement; choose package/probe and record device ID | No physical sensor reading implemented yet |
 | Second temperature sensor | 0 initially; 1 optional | Charger-area measurement if added | Not a battery-core temperature reading |
@@ -106,9 +106,9 @@ Four front controls remain the planning allowance; buy their exact forms only af
 | Bulk/decoupling capacitors | As required by selected circuit | Supply stability per regulator/driver requirements | A capacitor alone is not a power source or complete Pi shutdown solution |
 | USB-C panel input | 0 initially; 1 future | Optional common inlet | Exact PD/source contract and converter design unresolved |
 | PD sink plus converter, if shared inlet chosen | 1 compatible set | Negotiate a supported input and regulate required outputs | Not needed for initial separate supplies; voltage/power not fixed |
-| Shelf USB-C charging output | 1 if wired AirPods charging added | A compliant charging **source**, with correct USB-C signaling and protection | A bare connector/breakout is not a complete charging source |
+| AirPods USB-C charging source | 1 usable output; existing charger may suffice | Wired charging selected; route a cable through the bottom of the v0.4 cup | No panel socket required initially; a bare connector/breakout is not a complete charging source |
 | Short angled USB-C cable | 1 | Approximately 0.5 ft / 15 cm for shelf charging | Confirm both plug directions, access and source/case compatibility |
-| Wireless charging puck/module | 0 initially; 1 optional | Complete compatible charger, tested through the Latercase | Alternative/addition after alignment and temperature tests |
+| Wireless charging puck/module | 0 initially; 1 optional | Complete compatible charger, tested through the Latercase | Deferred; v0.4 uses the bottom cable opening |
 | Removable charger holder/backing | 1 if wireless chosen | Future shelf part plus appropriate fasteners | Puck dimensions and cable exit required first |
 
 For truck power, first identify the actual supply point and its voltage/rating. Any converter wired to vehicle power must be suitable for that source and its transients; a bench buck board is not automatically an automotive power design. Keep the Garmin on its supplied/approved arrangement during accessory experiments.
@@ -154,3 +154,4 @@ These are optional future features, not required for a working GPS mount, lights
 | USB cable lengths and elbow directions | |
 
 Photograph the package labels or place loose screws/nuts beside calipers. Check a known matching M2 nut threads on by hand; never force an uncertain thread. We can reuse verified hardware or deliberately revise the appropriate coupon/model before buying more.
+

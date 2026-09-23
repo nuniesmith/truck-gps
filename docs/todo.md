@@ -1,8 +1,8 @@
 # OTR620 & Truck GPS Master Plan
 
-[Current design](../README.md) · [V3.1 print instructions](../src/stl/v0.3/README.md) · [Conversation archive](chats.md) · [TomTom API](tomtom-api.md) · [Google Maps API](google-maps-api.md)
+[Current design](../README.md) · [v0.4 print instructions](../src/stl/v0.4/README.md) · [Conversation archive](chats.md) · [TomTom API](tomtom-api.md) · [Google Maps API](google-maps-api.md)
 
-Baseline: **V3.1 fit prototype**, September 17, 2026. Checked items reflect work recorded in the session. Unchecked items have no recorded completion. Electrical values and unmeasured fit dimensions are provisional. No deadlines have been agreed.
+Current CAD: **v0.4 measured-fit revision**, September 22, 2026, retaining V3.1 faceplate hardware. Checked items reflect work recorded in the session. Unchecked items have no recorded completion. Electrical values and unmeasured fit dimensions are provisional. No deadlines have been agreed.
 
 ---
 
@@ -36,7 +36,7 @@ Use [the complete parts list](parts-list.md) for quantities, faceplate hardware 
 
 ## 1. Truck and accessory tests — next work
 
-**In progress:** the user is printing the four v0.2 test files. Do not mark fit validation complete until results are recorded. The v0.3 tab/nut tests remain separate.
+**Reported v0.2 results:** front frame fits, bolt shank passes, head pocket is too small, and the AirPods collar fits snugly. The rear step must rise a measured 10 mm. Those changes are implemented in v0.4; the revised parts and v0.3 tab/nut hardware still need physical testing. See the [fit record](fit-test-v0.2.md).
 
 Goal: verify the truck and accessories before committing to the full print; the GPS is not required for these steps.
 
@@ -45,15 +45,16 @@ Goal: verify the truck and accessories before committing to the full print; the 
 - [ ] Inspect each test in the slicer at 100% scale; check clips, exclusion zones, purge lines, support footprint and brim clearance.
 - [ ] Remeasure opening height from the cubby floor/top of the black front lip to the opening top; record lip height separately from gray trim. The earlier approximately 8 mm discrepancy was a photo estimate.
 - [ ] Print `src/stl/v0.3/truck_fit_frame.stl`; check opening, corner radii, floor ridges and trim behind the wider mounting tabs.
-- [ ] Print `src/stl/v0.3/fit_gauge.stl`; check depth, taper and the top-bar step against the stated 25.4/50.8 mm depths.
-- [ ] Determine whether to remove the existing ball mount or revise geometry to clear it.
-- [ ] Print `src/stl/v0.3/dash_bolt_test.stl`; measure actual dash bolts and confirm head/shank fit, rear access and installation hardware. These are separate from the small M2 faceplate screws.
+- [ ] Print `src/stl/v0.4/side_gauge_plus10.stl`; confirm the measured rear rise while preserving the front reference. Check the unchanged top/taper gauge separately.
+- [x] Record the decision to remove the existing ball mount when the new mount is ready.
+- [ ] Remove the ball mount for final installation and verify rear access.
+- [ ] Print `src/stl/v0.4/bolt_head_fit_test.stl`; select the head allowance and record the actual head width. Keep the 7 mm bore that passed. The 10.8 mm full insert is provisional; also verify bolt length, rear access and installation hardware.
 - [ ] Print `src/stl/v0.3/nut_fit_test.stl` and `src/stl/v0.3/bolt_cover_test.stl`; compare 4.1/4.3/4.5 mm nut allowances with actual hardware.
 - [ ] Verify screw reach and repeated faceplate removal; settle how nuts remain in the open loading slots when screws are absent.
 - [ ] Measure rubber thickness including adhesive and its compressed thickness; test `src/stl/v0.3/pad_test.stl` with a measured 20 mm block.
 - [ ] Test adhesive compatibility with the rubber and chosen print material.
-- [ ] Print `src/stl/v0.3/accessory_test.stl` with the Latercase installed; measure AirPods case-on width, height and depth, and PopSocket length, width and thickness.
-- [ ] Check the shelf reach with a cardboard profile: approximately 80.1 mm forward and 73.9 mm below the cubby.
+- [ ] Print `src/stl/v0.4/airpods_charge_test.stl`; test the bottom hole with the Latercase and actual angled cable. Record plug/body reach and removal effort. Check oval PopSocket geometry separately using the existing v0.3 accessory test.
+- [ ] Check the shelf reach with a cardboard profile: approximately 82 mm forward and 74 mm below the cubby for the v0.4 shelf.
 - [ ] Record photos and measured tight/loose areas, then revise CAD parameters and reprint affected coupons.
 
 ---
@@ -77,7 +78,7 @@ Goal: verify the truck and accessories before committing to the full print; the 
 ## 3. Mechanical assembly and validation
 
 - [ ] Recheck thin sections near tongue channels and rear microphone routing before adding holes, latch roots or electronics mounts.
-- [ ] Slice `src/stl/v0.3/insert.stl`, `src/stl/v0.3/faceplate.stl` and `src/stl/v0.3/shelf.stl`; inspect the insert step, nut tabs, tongues, supports and print orientation.
+- [ ] After the small tests, slice the v0.4 trial insert, faceplate and wired shelf; inspect the insert step, nut tabs, tongues, angled collar, supports and print orientation.
 - [ ] Assemble using measured dash hardware and tested M2 fasteners; verify the lower bolts clamp the shelf tongues/L-tabs as intended.
 - [ ] Confirm the 176.5 mm tab width and 6.6 mm faceplate projection plus screw heads clear the actual dashboard.
 - [ ] Confirm comfortable GPS insertion/removal and repeatable screw/nut service without excessive pad compression.
@@ -133,13 +134,14 @@ Goal: leverage the in-truck Starlink Wi-Fi network and a private VPN overlay to 
 
 - [ ] Select two diffused blue LEDs, one resistor per LED, and wire them to the dedicated front button on the faceplate.
 - [ ] Test `src/stl/v0.3/led_carrier.stl`; aim LEDs at an internal surface and keep wiring clear of the sound path.
-- [ ] Select a suitable shelf USB-C output and short approximately 0.5 ft angled USB-C cable for wired AirPods charging.
+- [x] Select wired AirPods charging through a bottom opening for this revision.
+- [ ] Choose a compatible charging source and short approximately 0.5 ft angled USB-C cable; a panel socket is optional.
 - [ ] Check connector access and bend clearance with the Latercase installed and AirPods in the tray.
 - [ ] Verify simultaneous GPS and AirPods charging under the expected load and temperature conditions.
 
 ---
 
-## 7. Optional wireless charging
+## 7. Optional wireless charging — deferred
 
 - [ ] Select a complete compatible charging puck and test it through the Latercase before designing its recess in the shelf.
 - [ ] Check alignment, charging stability and temperature with the case at the intended 45° angle.
@@ -152,7 +154,7 @@ Goal: leverage the in-truck Starlink Wi-Fi network and a private VPN overlay to 
 
 - [x] Select the **Noctua NF-A4x20 5V PWM**, four-pin fan, per the user's preference.
 - [ ] Measure the actual fan and verify the [manufacturer dimensions and connection plan](pi-setup.md#selected-fan-and-proposed-interface).
-- [ ] Design a removable v0.4 mount with clearance beyond the padded fan envelope, including wiring, fasteners and airflow. Do not assume a 22 mm pocket is sufficient.
+- [ ] Design a removable fan mount in a later electronics revision with clearance beyond the padded fan envelope, including wiring, fasteners and airflow. Do not assume a 22 mm pocket is sufficient.
 - [ ] Verify mounting hardware and the complete fit against the GPS, USB elbow, controller and current cavity.
 - [ ] Add top exhaust and lower intake vents with a separate path from the sound duct; check cabin-air access and acoustic effects.
 - [ ] Select and identify the DS18B20 sensors; verify power, pull-ups, placement and cable routing.
@@ -216,13 +218,19 @@ Goal: leverage the in-truck Starlink Wi-Fi network and a private VPN overlay to 
 - [ ] If any original Claude prompts, code blocks or turns are missing from the supplied text, append them with their session labels.
 - [ ] Update the mechanical source, exported files and print notes together after measured fit changes.
 
-## 11. v0.4 preparation after test prints
+## 11. v0.4 fit revision and follow-up
 
-- [ ] Record all four v0.2 fit results and photograph interference points; measure the floor-lip reference, corners, taper and shelf clearance.
+- [x] Record the supplied photos and user reports; distinguish measured +10 mm rear rise from unresolved dimensions.
+- [x] Create `src/stl/v0.4/` while preserving prior revisions.
+- [x] Raise the shared rear-step profile 10 mm; preserve front opening, floor, depth and bolt positions.
+- [x] Export head-size coupons, a provisional 10.8 mm insert and a side gauge.
+- [x] Restore the snug v0.2 AirPods collar section on the upward-facing shelf and add a bottom charging opening/cup test.
+- [x] Validate all six exported meshes, nominal bed envelopes and the documented CAD intersections.
+- [ ] Test the three small v0.4 prints; record the winning bolt-head coupon and actual cable fit before long prints.
+- [ ] Confirm front seating with rubber removed if needed; do not pull a binding print into shape with the bolts.
 - [ ] Validate the v0.3 front tabs and M2 coupons plus the oval PopSocket geometry.
 - [ ] Confirm actual Pi, fan, OLED, buttons, power hardware and cable envelopes before fixing cutouts.
-- [ ] Create `src/stl/v0.4/` from the accepted dimensions, preserving prior revisions.
-- [ ] Add a removable electronics carrier, fan bracket, separate vents, serviceable wiring and modular display/switch openings.
+- [ ] In a later electronics revision, add a removable carrier, fan bracket, separate vents, serviceable wiring and modular display/switch openings.
 - [ ] Keep GPS-dependent fits provisional until the device arrives; validate local coupons before the complete assembly.
 
 ## Fit result record
@@ -240,4 +248,5 @@ Copy this table for each test or revision. Blank cells indicate information stil
 | Photos / observations | |
 | Required CAD change | |
 | Retest outcome | |
+
 
