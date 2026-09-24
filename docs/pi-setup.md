@@ -2,7 +2,7 @@
 
 [Project](../README.md) · [Tasks](todo.md) · [V3.1 print notes](../src/stl/v0.3/README.md)
 
-Status: **simulation software implemented; hardware integration pending**. The earlier review of commit `f8075d72dddf59a85583dda3cea287938e356ffc` found no `src/pi/` directory and withdrew incomplete README snippets. The first package now implements deterministic fan/LED decisions, fault handling, configuration, console status and tests. It has no physical outputs or live sensor reads. No v0.4 CAD has been generated. See [running instructions](../src/pi/README.md).
+Status: **simulation software implemented; hardware integration pending**. The earlier review of commit `f8075d72dddf59a85583dda3cea287938e356ffc` found no `src/pi/` directory and withdrew incomplete README snippets. The first package now implements deterministic fan/LED decisions, fault handling, configuration, console status and tests. It has no physical outputs or live sensor reads. The [v0.4 fit revision](../src/stl/v0.4/README.md) is now exported; it does not add electronics or cooling mounts. See [running instructions](../src/pi/README.md).
 
 ## Decisions and outstanding choices
 
@@ -10,7 +10,7 @@ Status: **simulation software implemented; hardware integration pending**. The e
 - Selected host: **Raspberry Pi Zero 2 W with Raspberry Pi OS Lite**, confirmed by the user for full Linux services and low-level peripheral control. A Pico is not required for the initial design.
 - Keep the Garmin on its supplied power arrangement for initial tests. The Pi supervises accessories; a rated power-distribution circuit supplies their current.
 - The Pi Zero 2 W is selected. Choose the exact OLED module, switches, regulator and GNSS receiver before freezing pin assignments and enclosure cutouts.
-- The user is printing the four v0.2 test pieces. Printing has started; no physical fit result is recorded yet.
+- The user reports a good front-frame fit and snug AirPods collar, a passing bolt-shank fit with an undersized head pocket, and a measured +10 mm rear-step correction. See [the fit record](fit-test-v0.2.md); the v0.4 follow-up prints remain untested.
 
 The Zero 2 W uses micro-USB connectors and 2.4 GHz Wi-Fi. A USB-C panel inlet would therefore be part of the mount's power design, not the Pi's native connector. Confirm the truck network supports the board and include adapter/cable space in CAD. [Raspberry Pi specifications](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/)
 
@@ -97,7 +97,7 @@ Keep the control loop local and independent of Tailscale, maps, OLED and interne
 
 ## v0.4 preparation after fit tests
 
-Use `src/stl/v0.4/` for the next mechanical revision once inputs are available; it does not exist yet. Preserve the older session files.
+The measured mechanical corrections are exported in `src/stl/v0.4/`, with earlier versions preserved. The electronics tasks below remain for a later revision after component envelopes are confirmed.
 
 - Record v0.2 face-frame, depth-gauge, bolt-trap and shelf-pocket results. The round v0.2 PopGrip seat does not validate the oval accessory.
 - Test the v0.3 faceplate tabs and M2 nut pockets separately.
@@ -105,5 +105,6 @@ Use `src/stl/v0.4/` for the next mechanical revision once inputs are available; 
 - Measure the chosen electronics, switches, fan, connectors and cable bends. Keep GPS-dependent geometry provisional until the unit arrives.
 - Design a removable electronics carrier, adjustable fan mount, separate ventilation path, serviceable wiring and modular display/switch cutouts.
 - Maintain the padded GPS support, removable faceplate, speaker path and upward-facing accessory tray.
-- Print new local fit coupons before exporting the complete v0.4 assembly. Check bed footprint, supports and interfaces again.
+- Test the three v0.4 coupons before its full parts. For later electronics changes, add local fit coupons and recheck bed footprint, supports and interfaces.
+
 

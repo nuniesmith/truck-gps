@@ -4,7 +4,7 @@ A modular, parametric mount for the upper dash cubby in a **2022 Volvo VNL 860**
 
 This repository, formerly specific to the OTR620, has been restructured into a generic **`truck-gps`** project to host both mechanical (STL/CAD) files and software (Raspberry Pi/telemetry) code.
 
-**Current status:** the repository contains the V3.1 mechanical fit prototype and earlier CAD sessions. The four v0.2 test pieces are currently being printed; physical fit results remain pending. A runnable simulation-first controller now lives in `src/pi/`: fan hysteresis, full-speed override, LED commands, sensor-fault handling and text/JSON status. Physical GPIO/PWM, live sensors, OLED, telemetry and revised cooling/power hardware remain unimplemented and untested.
+**Current status:** [v0.4 fit-revision files](src/stl/v0.4/README.md) incorporate the reported v0.2 tests: the front frame fits, the rear step needs a measured 10 mm rise, the bolt shank fits but the head pocket is too small, and the cased AirPods fit snugly. v0.4 includes three targeted tests, a trial insert, a wired AirPods shelf and the retained M2 faceplate. The 10.8 mm bolt-head trap and charging opening still need testing. A runnable simulation-first controller now lives in `src/pi/`: fan hysteresis, full-speed override, LED commands, sensor-fault handling and text/JSON status. Physical GPIO/PWM, live sensors, OLED, telemetry and revised cooling/power hardware remain unimplemented and untested.
 
 Repository: [nuniesmith/truck-gps](https://github.com/nuniesmith/truck-gps).
 
@@ -17,9 +17,10 @@ Repository: [nuniesmith/truck-gps](https://github.com/nuniesmith/truck-gps).
 - [docs/pi-setup.md](docs/pi-setup.md): Selected fan, Pi review findings, software implementation and bench setup plan.
 - [docs/todo.md](docs/todo.md): Master planning, task tracking, measurements, and physical test records.
 - [docs/parts-list.md](docs/parts-list.md): Build inventory, exact faceplate fasteners, owned hardware and staged electronics list.
-- [docs/fit-test-v0.2.md](docs/fit-test-v0.2.md): Worksheet for the four prints currently underway, review findings and v0.4 prerequisites.
+- [docs/fit-test-v0.2.md](docs/fit-test-v0.2.md): Recorded v0.2 results, measurements still needed and the follow-up tests.
 - [docs/chats.md](docs/chats.md): Historical session logs (v0.1, v0.2, and v0.3) preserving earlier design rationale and prompts.
-- [src/stl/v0.3/README.md](src/stl/v0.3/README.md): Current V3.1 print sequence, hardware, assembly and OpenSCAD export instructions.
+- [src/stl/v0.4/README.md](src/stl/v0.4/README.md): Current fit revision, six printable files, test order and OpenSCAD exports.
+- [src/stl/v0.3/README.md](src/stl/v0.3/README.md): Earlier V3.1 instructions and reusable M2, pad and external-tab coupons.
 - [docs/notes.md](docs/notes.md): Raw project ideas and planning notes.
 - [docs/tomtom-api.md](docs/tomtom-api.md): TomTom Orbis Map, Routing, and Traffic API free tier and integration details.
 - [docs/google-maps-api.md](docs/google-maps-api.md): Google Maps Platform free tier, Essentials, and Pro API configurations.
@@ -41,7 +42,8 @@ truck-gps/
     └── stl/                # 3D printer files (OpenSCAD & STLs grouped by design versions)
         ├── v0.1/           # First-generation design files
         ├── v0.2/           # Second-generation design files
-        └── v0.3/           # V3.1 parametric mount & coupon test models
+        ├── v0.3/           # V3.1 parametric mount & coupon test models
+        └── v0.4/           # Measured rear-step revision, head coupons and wired shelf
 ```
 
 ### Design sessions
@@ -51,12 +53,13 @@ truck-gps/
 | [src/stl/v0.1](src/stl/v0.1) | First Claude session | Original insert and fit tests |
 | [src/stl/v0.2](src/stl/v0.2) | Second Claude session | Rubber pads and accessory shelf |
 | [src/stl/v0.3](src/stl/v0.3) | This ChatGPT session | V3.1 faceplate hardware, revised shelf and 12 STL files |
+| [src/stl/v0.4](src/stl/v0.4) | Measured fit follow-up | Rear step +10 mm, bolt-head sizing coupons and wired AirPods collar |
 
 The session directory `v0.3` contains the CAD revision named **V3.1**; these are different naming schemes. Earlier `src/v0.x` paths and repository names in [the chat archive](docs/chats.md) are historical. Use the current paths above when locating files.
 
 ### First print checks
 
-The four **v0.2** tests currently printing have their own [fit worksheet](docs/fit-test-v0.2.md), including nominal dimensions and what each part can establish. Record those results first. Then use [the V3.1 printing instructions](src/stl/v0.3/README.md#print-now-without-the-gps) for the newer external tabs, M2 hardware and accessory outlines; those features are not validated by v0.2. The GPS housing, rear ports, gasket overlap and power requirements remain provisional until verified on the actual unit.
+The **v0.2 results** are recorded in the [fit worksheet](docs/fit-test-v0.2.md). Next print `side_gauge_plus10.stl`, `bolt_head_fit_test.stl` and `airpods_charge_test.stl` from [v0.4](src/stl/v0.4/README.md). Keep the front frame dimensions unchanged; the existing ball mount will be removed and the cubby rubber can be removed if it prevents seating. Select the head size before committing to the full insert: its supplied 10.8 mm trap is a trial. The [V3.1 external-tab and M2 tests](src/stl/v0.3/README.md#print-now-without-the-gps) still apply. The GPS housing, rear ports, gasket overlap and power requirements remain provisional until verified on the actual unit. This v0.4 revision does not add the planned electronics carrier or cooling hardware.
 
 ---
 
@@ -150,8 +153,8 @@ Run [the controller simulation](src/pi/README.md) now, then follow [the implemen
 * **Mounting Type:** Secure gasketed front faceplate with 4x M2 × 6 mm screws and standard M2 nuts.
 * **Operating Voltage:** Provisional branch allowance of 5 V up to 2 A, not a confirmed peak rating; verify device/adapter requirements.
 
-### Accessory Mounts (V3.1 Shelf)
-* **AirPods Pro 3 Mount:** Angled at 45° for visual access, designed around a Latercase cover. Can support a wired short right-angle USB-C cable or an embedded magnetic wireless charging puck.
+### Accessory Mounts (v0.4 Shelf)
+* **AirPods Pro 3 Mount:** Angled at 45° for visual access, preserving the snug tested Latercase collar section and adding a trial bottom opening for a short right-angle USB-C cable. Wireless charging is deferred.
 * **PopSocket Mount:** Custom oval pocket designed around a MagSafe PopSocket base. Includes a recess for a 55mm OD / 43mm ID steel target ring for magnetic retention.
 
 ---
@@ -160,7 +163,7 @@ Run [the controller simulation](src/pi/README.md) now, then follow [the implemen
 
 The selected fan is the **Noctua NF-A4x20 5V PWM**, four-pin. Its nominal body is 40 × 40 × 20 mm and the manufacturer lists 22 mm thickness with pads. That is a component envelope, not a finished pocket dimension. See the [verified specifications and connection table](docs/pi-setup.md#selected-fan-and-proposed-interface).
 
-For v0.4, provide a removable mount with adjustable fit tolerance, cable access and airflow clearance. Keep ventilation separate from the speaker return duct. The existing approximately 29.8 mm rear cavity and 39.4 mm sound opening do not establish that the complete fan installation fits. Check actual hardware and the truck test results before fixing the mount dimensions.
+For the later electronics revision, provide a removable mount with adjustable fit tolerance, cable access and airflow clearance. Keep ventilation separate from the speaker return duct. The existing approximately 29.8 mm rear cavity and 39.4 mm sound opening do not establish that the complete fan installation fits. Check actual hardware and the truck test results before fixing the mount dimensions.
 
 Control goals are temperature-based speed, hysteresis, a manual override and explicit fault behavior. A 25 kHz hardware PWM implementation must be selected for the actual Pi and OS. The previous `RPi.GPIO.PWM()` example was software PWM and has been removed from active setup instructions. The old ambiguous fan wiring drawing is replaced by the [connection plan](docs/pi-setup.md#selected-fan-and-proposed-interface).
 
@@ -179,14 +182,14 @@ An SSD1306 or SH1106 OLED remains planned. Select the exact module and verify it
 
 The former OLED snippet used fixed fan and switch values and CPU temperature, so it has been replaced by [implementation requirements](docs/pi-setup.md#software-status-under-srcpi). OLED or network failure must not block local cooling. Install Python dependencies in the application's virtual environment once the exact board/module stack is selected.
 
-## v0.4 inputs
+## v0.4 follow-up and electronics inputs
 
-Finish and record the v0.2 fit tests, then check the v0.3 mounting tabs and M2 hardware separately. The v0.2 round PopGrip pocket does not validate the oval PopSocket. Freeze the Pi, fan, OLED, switches and cable envelopes before designing permanent openings. The next mechanical revision is planned under `src/stl/v0.4/`; no v0.4 files have been generated yet. [Detailed checklist](docs/pi-setup.md#v04-preparation-after-fit-tests)
+The [v0.4 files](src/stl/v0.4/README.md) implement the measured rear correction and wired AirPods cup. Test the three small prints, then check the retained external tabs and M2 hardware separately. The v0.2 round PopGrip pocket does not validate the oval PopSocket. Freeze the Pi, fan, OLED, switches and cable envelopes before designing permanent electronics openings. [Detailed electronics checklist](docs/pi-setup.md#v04-preparation-after-fit-tests)
 
 ---
 
 ## Next Planning Phases
-1. **Mechanical Prototyping:** 3D print the V3.1 coupon tests and verify Volvo VNL cubby fit, M2 nut recesses, and Garmin housing dimensions.
+1. **Mechanical Prototyping:** Print the three v0.4 follow-up tests, then verify the retained M2 hardware, external tabs and actual Garmin housing dimensions.
 2. **Bench Bring-up:** Follow [the Pi setup plan](docs/pi-setup.md); initially power the GPS and accessory electronics separately. Recalculate the future combined supply budget using the selected Pi and peripherals.
 3. **Telemetry & Software PoC:**
    * Configure a Raspberry Pi Zero 2W with Tailscale and connect it to truck Starlink Wi-Fi.

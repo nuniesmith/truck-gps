@@ -1,10 +1,25 @@
-# v0.2 fit session and pre-v0.4 review
+# v0.2 fit results and v0.4 follow-up
 
 [Project](../README.md) · [Master tasks](todo.md) · [Pi setup](pi-setup.md) · [Parts list](parts-list.md)
 
-Prepared September 18, 2026. The four v0.2 test files were reported printing, with fit testing expected the following day. As of the September 20 parts-list update, no physical results have been recorded. This worksheet is for the actual v0.2 pieces, not the newer v0.3 coupons.
+Updated September 22, 2026 with the user's photos and measured correction. This record concerns the actual v0.2 pieces; it does not establish fit of the newer external tabs, M2 hardware or complete assembly.
 
-Review baseline: commit `e825f1b328b1a2e486c40cde8956fd3944a4d090`. PR #3 is merged. The current Pi files match the reviewed source, and all 21 software tests pass on Linux/Python 3.12.14. That verifies simulation behavior, not Pi installation, electrical operation, fit or road durability.
+## Reported results
+
+| Feature | User report | v0.4 action |
+|---|---|---|
+| Front frame | Fits well | Preserve 164.5 × 98.0 mm opening envelope and front profile |
+| SIDE gauge rear step | Rear needs to come up **10 mm**, confirmed measured | Raise the rear lower roof/step by 10 mm in both gauge and insert; keep depth, floor and front unchanged |
+| Front of SIDE gauge | Front is acceptable; rear contact with rubber lip affects seating | No front tilt/height change; remove rubber if necessary before tightening |
+| Dash bolt | Shank passes, head pocket needs enlargement | Preserve 7 mm bore; supply labeled 10.6–12.2 mm head coupons and a **provisional 10.8 mm** insert |
+| AirPods with Latercase | Snug fit in the v0.2 collar | Preserve nominal 64.2 × 23.8 mm stadium opening and 12 mm collar wall; add a bottom USB-C opening |
+| Charging | Wired bottom access selected | Trial 18 × 10 mm opening; verify actual plug and elbow using the small cup |
+| Existing ball mount | Will be removed after the new mount is ready | No ball-mount clearance added |
+| TOP gauge / PopSocket | No separate measured result supplied | Keep taper and PopSocket geometry provisional |
+
+Print the three small [v0.4 tests](../src/stl/v0.4/README.md) before the large parts. Bolt-head width, cable-body dimensions and reprinted-part fit remain unmeasured.
+
+Earlier software review baseline: commit `e825f1b328b1a2e486c40cde8956fd3944a4d090`. PR #3 is merged. The current Pi files match the reviewed source, and all 21 software tests pass on Linux/Python 3.12.14. That verifies simulation behavior, not Pi installation, electrical operation, fit or road durability.
 
 ## Bring to the truck
 
@@ -53,11 +68,11 @@ Bolt length must be chosen using the measured dash wall plus the printed bearing
 | Priority | Finding | Next action |
 |---|---|---|
 | Before the full assembly print | Passing v0.2 does not validate the v0.3 faceplate tabs. Those extend the nominal overall width from 164.5 to 176.5 mm. | Check surrounding trim and print the v0.3 tab/nut coupons after cubby measurements are recorded. |
-| Before using the owned dash bolts in v0.3 | The v0.2 hex trap is 10.3 mm across flats; v0.3 is 9.9 mm despite an inherited comment mentioning 10 mm heads. | Measure the actual head and check the v0.3 dash-bolt coupon; revise the pocket if needed. |
+| Before printing the v0.4 insert | The 10.3 mm v0.2 head trap failed; v0.3 is smaller at 9.9 mm. The v0.4 10.8 mm choice is provisional. | Use the labeled v0.4 head coupons; retain the 7 mm bore that passed. Change `head_af` and re-export if a different coupon fits best. |
 | Before adding electronics | The current sound-window height is 39.4 mm. The selected fan body is 40 × 40 × 20 mm, or 22 mm thick with pads. | Treat a fan inside that unchanged window as unproven; design a separate carrier/air path and check the whole installation envelope. |
 | Before fixing the fan location | Nominal rear duct depth is only 29.8 mm, calculated as 50.8 − 2.0 back wall − 19.0 GPS pocket depth. | Include GPS rear protrusions, USB elbow, mounting hardware, fan connector, bends and airflow space in the layout. Body thickness alone is insufficient. |
 | Before adding holes near the shelf joint | The original tongue-channel roof has about 1.3 mm of nominal plastic beneath the GPS pocket: 6.6 − 5.3 mm. This is a geometry observation, not a strength result. | Keep new cable slots/fasteners away from this bridge until the section and load path are reviewed. |
-| Before accepting the shelf | v0.2 collar/round-seat tests do not validate the newer tray orientation, oval pocket or the user's retrieval motion. | Check the v0.3 accessory outline, shelf reach and clearance to dash controls separately. |
+| Before accepting the shelf | v0.2 collar/round-seat tests do not validate the newer tray orientation, oval pocket or the user's retrieval motion. | Check the v0.4 charging cup, oval PopSocket seat and shelf reach (about 82 mm forward and 74 mm below the cubby). |
 | When the GPS arrives | Housing thickness, faceplate overlap, rear ports and gasket compression remain assumptions. | Measure the device and plugged-in cable; verify the faceplate bears on housing and clears glass, controls and ports. |
 | Before powering physical hardware | The Pi controller is simulation-only. The default curve does not establish fan startup/minimum duty or fault behavior. | Select the GPIO/PWM interface, test live sensor acquisition and calibrate actual fan behavior on the bench. |
 | Before combining supplies | GPS demand, AirPods charging demand, wiring losses and Linux power-hold/shutdown are unresolved. | Keep initial Garmin power separate; complete a measured power budget before selecting shared distribution hardware. |
@@ -72,4 +87,5 @@ Fan dimensions are recorded with manufacturer references in [the existing fan pl
 4. **Serviceability plan:** reserve access to the microSD card, screws, GPS power button and cable connectors. An electronics carrier should come out without breaking the GPS support or permanent wiring.
 5. **Charging sequence:** verify wired AirPods access first. A removable wireless charger can follow after the actual puck, case alignment and temperature behavior are tested; an exposed shelf alone does not validate temperatures.
 
-After the results arrive, translate each observed interference into a parameter change, then print only the affected local coupons. Build v0.4 from accepted dimensions while preserving earlier revisions. No v0.4 geometry or physical fit has been approved by this review.
+The reported +10 mm rear correction is implemented in [v0.4](../src/stl/v0.4/README.md); earlier revisions are preserved. Mesh checks and limited CAD intersection checks pass. Physical fit of the new files, bolt-head selection, cable access and the complete assembly still require the follow-up tests.
+

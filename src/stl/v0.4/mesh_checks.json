@@ -1,0 +1,108 @@
+{
+  "units": "mm",
+  "checks": [
+    {
+      "file": "airpods_charge_test.stl",
+      "triangles": 808,
+      "size_mm": [
+        69.189,
+        28.8,
+        14.5
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 8992.878,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "2ccc338b2c60af01c5c70f52efb889e0919d9374ceebb156be867f6d4ba64b47"
+    },
+    {
+      "file": "bolt_head_fit_test.stl",
+      "triangles": 6016,
+      "size_mm": [
+        159.0,
+        28.0,
+        8.59
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 6,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 27845.857,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "c433dec3f6eca39b928b1ff3226692fee9c179c21bd6e42175304b9af1f0f407"
+    },
+    {
+      "file": "faceplate.stl",
+      "triangles": 2536,
+      "size_mm": [
+        176.5,
+        92.0,
+        6.3
+      ],
+      "min_z_mm": 1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 15099.605,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "570fa3d981af9d35c67cd59ddff36c9071ab82ad2f0f1ff2c74664385e0511d1"
+    },
+    {
+      "file": "insert_trial_10p8.stl",
+      "triangles": 6744,
+      "size_mm": [
+        176.5,
+        98.0,
+        55.0
+      ],
+      "min_z_mm": 1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 316077.816,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "13bc88f9813562ef37f163f7194808162f6f0552b22a1ea897a8d347742b3725"
+    },
+    {
+      "file": "shelf_wired_airpods.stl",
+      "triangles": 2712,
+      "size_mm": [
+        164.5,
+        132.763,
+        97.853
+      ],
+      "min_z_mm": 1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 89552.793,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "caaf01a9553d891daad9a6f1cbf69bc57324ebe10fb3552ed8de4cde63b8ecdb"
+    },
+    {
+      "file": "side_gauge_plus10.stl",
+      "triangles": 1612,
+      "size_mm": [
+        98.0,
+        50.8,
+        3.6
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 4942.926,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "b54f2e0db80d550fafe3c1ecf34086f7904ea6b4fbce842edb9603e11535b016"
+    }
+  ],
+  "scope": "Closed oriented mesh, nonzero triangles, expected component count and nominal bed envelope. Not a slicer, material-strength or physical-fit certification."
+}
