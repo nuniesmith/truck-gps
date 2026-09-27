@@ -1,0 +1,101 @@
+{
+  "source_sha256": "3b1335a7442c52e6c44103cb0ab93e96edeb5d4a591d1dc725bd651836b75c93",
+  "scope": "Nominal CAD interference only. Contact-separated checks use 0.01 mm shifts. Pico/header, GPS, connector and Zero envelopes are provisional. No physical-fit, airflow, structural or printability certification.",
+  "checks": [
+    {
+      "check": "check_fan_insert",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_fnk_insert",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_fan_fnk",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_rear_features",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_faceplate",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_shelf",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_carrier",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_control",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_airpods",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_charge",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_zero",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_module_shelf",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    },
+    {
+      "check": "check_module_lids",
+      "passed": true,
+      "triangles_in_intersection": null,
+      "empty_message": true,
+      "exit_code": 1
+    }
+  ],
+  "documentation_update": {
+    "current_source_sha256": "ce0c875ff9b686edc90b7f74fd6f7a51640f5748a114f4279b3f3a39cb97640b",
+    "note": "Only top-of-file export example comments changed after the recorded checks; executable CAD is unchanged."
+  }
+}

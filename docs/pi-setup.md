@@ -1,66 +1,57 @@
-# Pi setup and implementation plan
+# Pico first, Linux Zero later
 
-[Project](../README.md) · [Tasks](todo.md) · [V3.1 print notes](../src/stl/v0.3/README.md)
+Updated 2026-09-27. [Hardware plan](hardware-v0.5.md) · [Tasks](todo.md) · [Existing simulation](../src/pi/README.md)
 
-Status: **simulation software implemented; hardware integration pending**. The earlier review of commit `f8075d72dddf59a85583dda3cea287938e356ffc` found no `src/pi/` directory and withdrew incomplete README snippets. The first package now implements deterministic fan/LED decisions, fault handling, configuration, console status and tests. It has no physical outputs or live sensor reads. The [v0.4 fit revision](../src/stl/v0.4/README.md) is now exported; it does not add electronics or cooling mounts. See [running instructions](../src/pi/README.md).
+The current choice is a **Pico 2 WH for local control**, with a **Pi Zero 2 W** added later for a full OS. This supersedes the earlier Zero-only controller plan. `src/pi/` remains a Linux/Python simulation and is not firmware that can be flashed onto a Pico. No live hardware adapter or Pico firmware is implemented by the v0.5 CAD revision.
 
-## Decisions and outstanding choices
+## Responsibilities
 
-- Selected fan: **Noctua NF-A4x20 5V PWM**, four-pin, with temperature-based speed control and a manual override.
-- Selected host: **Raspberry Pi Zero 2 W with Raspberry Pi OS Lite**, confirmed by the user for full Linux services and low-level peripheral control. A Pico is not required for the initial design.
-- Keep the Garmin on its supplied power arrangement for initial tests. The Pi supervises accessories; a rated power-distribution circuit supplies their current.
-- The Pi Zero 2 W is selected. Choose the exact OLED module, switches, regulator and GNSS receiver before freezing pin assignments and enclosure cutouts.
-- The user reports a good front-frame fit and snug AirPods collar, a passing bolt-shank fit with an undersized head pocket, and a measured +10 mm rear-step correction. See [the fit record](fit-test-v0.2.md); the v0.4 follow-up prints remain untested.
-
-The Zero 2 W uses micro-USB connectors and 2.4 GHz Wi-Fi. A USB-C panel inlet would therefore be part of the mount's power design, not the Pi's native connector. Confirm the truck network supports the board and include adapter/cable space in CAD. [Raspberry Pi specifications](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/)
-
-## Selected fan and proposed interface
-
-| Item | Manufacturer specification |
+| Device / circuit | Planned responsibility |
 |---|---|
-| Model | NF-A4x20 5V PWM |
-| Body / with pads | 40 × 40 × 20 mm / 40 × 40 × 22 mm |
-| Mounting-hole spacing | 32 × 32 mm |
-| Supply / maximum current | 5 V / 0.1 A |
-| Connector | Four-pin |
-| Speed at 0% PWM | Stopped |
+| Pico 2 WH | Hardware fan PWM, tach counting, identified temperature sensor, LED dimming, debounced switches and local display |
+| Separate power hardware | Regulation, protected load current, USB-C input/output behavior, load switching and power hold-up |
+| Future Pi Zero 2 W | OS, SSH, network status, logging, maps, GNSS integration and home-display service |
 
-Source: [Noctua model specifications](https://www.noctua.at/en/products/nf-a4x20-5v-pwm/specifications). Confirm dimensions on the actual part. A 22 mm body envelope is not sufficient evidence for a 22 mm printed pocket: add fit tolerance, connector access, wire bends, mounts and unobstructed intake/exhaust space. The current lower cavity is about 29.8 mm deep and the sound opening about 39.4 mm high; installation needs a geometry review.
+The Pico must continue its local control policy when the Zero is absent, booting, shut down or disconnected. Network/display activity must not block fan updates. The Freenove board is a GPIO breakout, not the power regulator for the GPS or Zero.
 
-| Fan pin | Manufacturer wire colour | Proposed connection |
-|---|---|---|
-| 1 | Black | Common ground |
-| 2 | Yellow | Protected, regulated 5 V fan branch |
-| 3 | Green | Optional tachometer input with a suitable 3.3 V pull-up/interface |
-| 4 | Blue | Dedicated PWM control interface; never join to the ground conductor |
+## Proposed Pico pin reservation
 
-Verify connector orientation and pin numbers, especially with adapters. The manufacturer's colours supersede the older README's red supply-wire label. Fan power must not come from a GPIO output.
+This is a planning map using **GPIO numbers**, not physical header pin numbers or a ready-to-wire schematic. Confirm the selected modules and electrical interfaces before connecting them.
 
-Use a **25 kHz target** with the manufacturer's allowed **21–28 kHz** range. Noctua describes an internal PWM pull-up, recommends a CMOS-style driver and does not recommend an open-collector driver for its fans. Select a Pi-compatible interface after checking the actual fan's pull-up voltage and powered/unpowered conditions; direct GPIO compatibility is not established by the old drawing. With no PWM input, the fan runs at full speed, but a crashed output held low may instead leave it stopped. Design and test fault handling accordingly. [Noctua PWM white paper](https://noctua.at/pub/media/wysiwyg/Noctua_PWM_specifications_white_paper.pdf)
-
-GPIO18 is a candidate signal pin, not a finalized wiring instruction. `RPi.GPIO.PWM()` produces software PWM; using GPIO18 does not automatically select hardware PWM. Choose and verify a hardware PWM backend for the selected board/OS, or use a dedicated controller. [RPi.GPIO project documentation](https://pypi.org/project/RPi.GPIO/)
-
-## Review findings to resolve in implementation
-
-| Finding in the previous examples | Required behavior |
+| GPIO | Reserved role |
 |---|---|
-| Missing sensor returns an empty string and the caller indexes it | Return a typed fault; survive missing files, disconnects and malformed data. |
-| CRC retry loop has no deadline | Bound retries and stale-reading age; controller ticks must keep running. |
-| Missing temperature marker becomes 0°C | Do not interpret errors as a cold compartment. Enter a documented fallback state. |
-| First discovered sensor is used without identity | Configure sensor IDs and distinguish GPS compartment, charger and Pi CPU readings. |
-| Software PWM is labelled hardware PWM | Verify waveform frequency and duty under CPU/network load. |
-| OLED uses fixed fan/GPS/LED values | Read shared controller state; distinguish requested duty, measured RPM and unavailable feedback. |
-| Network subprocesses have no timeout | Bound calls and keep display/network failures independent of thermal control. |
-| Abrupt master power-off is assumed | Define shutdown request, power-hold hardware and restart behavior before connecting ignition control. |
-| GPS data source is unspecified | Verify a usable live Garmin interface or select a supported external GNSS receiver. |
+| GP0 / GP1 | UART TX / RX to future Zero, using a common 3.3 V-compatible interface |
+| GP4 / GP5 | I²C SDA / SCL for chosen display/module |
+| GP6 | Temperature bus, if a compatible 1-Wire sensor is selected |
+| GP10 | LED driver dimming request |
+| GP12 | Fan hardware PWM request through the verified interface |
+| GP13 | Fan tach input through its 3.3 V-compatible interface |
+| GP14 | LED switch/button |
+| GP15 | Fan auto/boost switch/button |
+| GP16 | GPS switch state |
+| GP17 | Master/shutdown request input |
+| GP18 | GPS load-switch enable request |
+| GP19 | Future Zero power enable request |
+| GP20 | Future Zero shutdown-ready input, if that scheme is chosen |
 
-On temperature-sensor failure, the simulation requests full cooling and reports a fault; a future hardware adapter must apply that request while the fan branch is powered. This software policy cannot guarantee cooling during a power failure or a crashed GPIO driver; bench-test the electrical default state. The implemented simulation permits auto or full-speed boost; sensor faults take priority. A force-off mode is not provided. Validate the policy with the physical hardware before use.
+A GPIO request cannot carry the GPS/fan/computer load. Keep the fan's regulated supply distinct from the PWM signal. Use the [selected four-pin fan connection plan](hardware-v0.5.md#fan-wiring-and-behavior). Verify PWM waveform, duty, startup and tach readings on the bench before connecting the Garmin.
 
-The earlier 35–45°C ramp is a **bench starting proposal**, not a validated protection limit. Simulation uses 35°C start, 32°C stop and a provisional 30% minimum request. Startup behavior and minimum stable duty still need physical calibration. Calibrate against actual sensor placement and the GPS/charger operating limits. A housing sensor does not measure the device's internal battery temperature.
+## Firmware work still needed
 
-## Software status under src/pi
+1. Choose the supported Pico 2 W MicroPython build or C/C++ SDK and record its version. Recheck official instructions when doing the installation.
+2. Implement bounded periodic control, hardware PWM and a watchdog. Start with the host simulation's tested policy as a reference, not a copy of its Linux code.
+3. Acquire the identified temperature sensor with timeouts and explicit missing/CRC/stale faults. Never substitute 0°C for an error. A housing sensor is not the GPS battery's internal temperature.
+4. Apply auto/boost control and fault priority. The earlier 35°C start, 32°C stop and 35–45°C ramp are bench proposals, not validated protection limits. Calibrate minimum stable duty and restart behavior with the real fan.
+5. Debounce inputs and implement dim LED control. Make requested states distinct from measured power or RPM; absent feedback is unknown.
+6. Add the selected OLED after control works. Display temperature, fault state, duty, optional RPM and switch state. A missing display must not halt cooling.
+7. Add a bounded, versioned UART protocol with sequence numbers, timeouts and status/error replies. A stale host command must not defeat the local fallback policy. Do not make cooling depend on Wi-Fi.
+8. Test boot/reset, missing sensor, stuck output, fan stall, disconnected host and recovery. Confirm the fan interface's electrical default state independently of firmware.
 
-Run the package with Python 3.11+; no GPIO libraries are imported. The only supported mode is `simulate`.
+Programming USB access is intended with the rear carrier removed. Prevent backfeeding a USB host when an external supply is connected; follow the Pico datasheet's power arrangements. Measure the complete Freenove/Pico/header stack before installing it behind the GPS. Wi-Fi performance near the GPS and metal fasteners remains to test.
+
+## Existing Linux simulation
+
+Run with Python 3.11+; it imports no GPIO library and supports simulation only:
 
 ```sh
 cd src/pi
@@ -68,43 +59,22 @@ python3 -m truck_gps --config config.example.toml --format json
 python3 -m unittest discover -s tests -v
 ```
 
-| File | Implemented now | Remaining hardware work |
-|---|---|---|
-| `README.md`, `pyproject.toml` | Quickstart and installable CLI, no external runtime dependencies | Verify on the actual Pi OS/Python |
-| `config.example.toml`, `truck_gps/config.py` | Validated thresholds, expected sensor ID and LED settings | Pin/interface configuration after hardware selection |
-| `truck_gps/sensors.py` | Pure captured 1-Wire sample parser and typed faults | Identified device reads with bounded acquisition |
-| `truck_gps/hardware.py` | Simulation output adapter only | Verified PWM/GPIO adapters, boot/crash behavior |
-| `truck_gps/controller.py` | Fan curve/hysteresis, auto/boost, LED requests and fault priority | Startup kick/minimum-duty calibration and buttons |
-| `truck_gps/display.py` | Text/JSON status; RPM and GPS power explicitly unknown | OLED renderer, bounded network status |
-| `truck_gps/main.py`, `truck_gps/simulation.py` | Validated scenarios, virtual time, logging and signal handling | Live acquisition/control scheduling |
-| `systemd/truck-gps-sim.service` | Optional simulation-only template denying device access | Actual Pi installation and production service permissions |
-| `tests/` | 21 passing software tests, including CLI/SIGTERM | Physical sensor/fan/output and Pi boot tests |
+The existing package provides configuration validation, captured-sample parsing, fan hysteresis, auto/boost policy, LED requests, typed sensor faults, scenario playback and text/JSON output. Its example systemd unit deliberately denies device access. The earlier implementation recorded 21 passing software tests; this CAD revision does not add a physical hardware test claim.
 
-The demo runs immediately by default; `--realtime --loop` paces a repeating scenario. It does not run a real temperature acquisition loop. Scenario timestamps are virtual. A hardware service must use actual monotonic sample times and keep reads, display/network operations and control scheduling independent.
+Keep those pure policy tests when adapting behavior to the Pico, and add meaningful firmware/interface tests for timing and failure behavior. A future Linux package should consume Pico status rather than competing to drive the same fan/switch lines. Do not install `RPi.GPIO.PWM()` expecting that function to produce hardware PWM just because a PWM-capable pin was chosen.
 
-Keep the control loop local and independent of Tailscale, maps, OLED and internet availability. Use a Python virtual environment and a service account with only the needed device permissions. Keep credentials outside the repository. Read [the package documentation](../src/pi/README.md) for configuration, fault recovery and service-template limitations.
+## Future Zero bring-up
 
-## Bring-up sequence when the Pi arrives
+Install a currently supported Raspberry Pi OS Lite image using official setup guidance, configure SSH/network access, and start on a suitable bench supply. The Zero's native power connector is micro-USB. Its OS storage and power-down process differ from the Pico's firmware environment.
 
-1. Use Raspberry Pi Imager to install an OS Lite image supported by the selected board. Configure hostname, user, Wi-Fi country/network and SSH access. Boot on a suitable bench supply. [Official setup guide](https://www.raspberrypi.com/documentation/computers/getting-started.html)
-2. Update the OS, record its version and establish SSH. Install Tailscale using its current Linux instructions and verify access from an authorized device. [Tailscale installation](https://tailscale.com/docs/install/linux)
-3. Enable I²C and 1-Wire using the selected OS configuration tools. Test the identified temperature sensor and exact OLED module separately. Match SSD1306 versus SH1106 drivers and verify supply and pull-up voltages. [Pi configuration guide](https://www.raspberrypi.com/documentation/computers/configuration.html)
-4. Run the existing package and simulation tests on the Pi; record the OS/Python versions. Freeze board/OS-specific GPIO dependencies only after verifying support.
-5. Implement live sensor acquisition and the hardware adapter. With the selected PWM interface and protected fan supply, test commanded duty, startup, stopping, optional tach feedback and sensor disconnection. Verify timing under load.
-6. Add dim LEDs and debounced buttons. Verify that accessory switching does not interrupt the Garmin branch.
-7. Add the service and test reboot, service crash, missing OLED, Wi-Fi loss and controlled shutdown. Do not rely on service restarts alone as the fan's electrical fallback.
-8. Add GNSS logging and the home map later. Validate no-fix/stale-fix handling, trip distance, year boundaries and storage retention before adding traffic APIs. Keep trip data usable during network outages.
+Run the simulation, then implement the Pico protocol client and logging. Add network/Tailscale status with timeouts. Keep credentials out of this repository. Define a shutdown request, confirmation, hold-up interval and load-switch circuit before using ignition/master power to disconnect Linux. A capacitor alone is not a shutdown controller.
 
-## v0.4 preparation after fit tests
+Later, select an external GNSS receiver unless a usable Garmin live-position interface is verified. Implement stale/no-fix handling, timestamped tracks, distance calculations, year boundaries and storage retention before adding a home map or traffic API. Keep local logs useful during network loss. Existing API-price notes must be rechecked at implementation time.
 
-The measured mechanical corrections are exported in `src/stl/v0.4/`, with earlier versions preserved. The electronics tasks below remain for a later revision after component envelopes are confirmed.
+## References
 
-- Record v0.2 face-frame, depth-gauge, bolt-trap and shelf-pocket results. The round v0.2 PopGrip seat does not validate the oval accessory.
-- Test the v0.3 faceplate tabs and M2 nut pockets separately.
-- Confirm the cubby measurement starts at the top of the black floor lip; measure taper, corners and shelf/control clearance.
-- Measure the chosen electronics, switches, fan, connectors and cable bends. Keep GPS-dependent geometry provisional until the unit arrives.
-- Design a removable electronics carrier, adjustable fan mount, separate ventilation path, serviceable wiring and modular display/switch cutouts.
-- Maintain the padded GPS support, removable faceplate, speaker path and upward-facing accessory tray.
-- Test the three v0.4 coupons before its full parts. For later electronics changes, add local fit coupons and recheck bed footprint, supports and interfaces.
-
-
+- [Pico 2 W datasheet](https://datasheets.raspberrypi.com/picow/pico-2-w-datasheet.pdf)
+- [Pico-series official documentation](https://www.raspberrypi.com/documentation/microcontrollers/)
+- [Zero 2 W product](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/)
+- [Pi OS setup](https://www.raspberrypi.com/documentation/computers/getting-started.html)
+- [Hardware choices and manufacturer sources](hardware-v0.5.md)
