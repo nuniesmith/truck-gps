@@ -1,0 +1,380 @@
+{
+  "units": "mm",
+  "checks": [
+    {
+      "file": "airpods_charge_test.stl",
+      "triangles": 808,
+      "size_mm": [
+        69.189,
+        28.8,
+        14.5
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 8992.878,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "2ccc338b2c60af01c5c70f52efb889e0919d9374ceebb156be867f6d4ba64b47"
+    },
+    {
+      "file": "bolt_cover_test.stl",
+      "triangles": 624,
+      "size_mm": [
+        48.0,
+        12.0,
+        2.4
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 3,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 1009.508,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "9c790f1e7dc401581eed55f72d631f4a16367987ac456a09cbd9ed79b8b0e488"
+    },
+    {
+      "file": "bolt_head_fit_test.stl",
+      "triangles": 6016,
+      "size_mm": [
+        159.0,
+        28.0,
+        8.59
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 6,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 27845.857,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "c433dec3f6eca39b928b1ff3226692fee9c179c21bd6e42175304b9af1f0f407"
+    },
+    {
+      "file": "control_outline_test.stl",
+      "triangles": 1032,
+      "size_mm": [
+        41.6,
+        90.0,
+        2.0
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 1642.303,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "b07298212585b98dfd3317688b87ea1497fe7d50199ee7bc48ca3adc94ea0ea3"
+    },
+    {
+      "file": "control_panel.stl",
+      "triangles": 988,
+      "size_mm": [
+        34.0,
+        90.0,
+        2.0
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 6087.941,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "e02bb0df509e5f179ee3816dbbf75e29d2194ffc6116fa392f1bfc7acacf74d4"
+    },
+    {
+      "file": "control_pod.stl",
+      "triangles": 2280,
+      "size_mm": [
+        41.6,
+        90.0,
+        17.8
+      ],
+      "min_z_mm": -0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 14672.132,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "931216d398c63df0bd09e2f1e47ddde820f3f7a969a32093fd9d05f7dccdfe98"
+    },
+    {
+      "file": "faceplate_v5.stl",
+      "triangles": 7292,
+      "size_mm": [
+        176.5,
+        92.0,
+        6.3
+      ],
+      "min_z_mm": 1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 14169.512,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "74176bd65e6c88d22615f0ac4b7430da0da738262b9baba5b473fa4a06995e16"
+    },
+    {
+      "file": "fan_mount_test.stl",
+      "triangles": 1952,
+      "size_mm": [
+        44.0,
+        44.0,
+        3.4
+      ],
+      "min_z_mm": -1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 2786.383,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "9290e45c997f48c9a01172263fa6302120c3362dac7edf39e321cab547452ce9"
+    },
+    {
+      "file": "fan_plenum_print_test.stl",
+      "triangles": 8056,
+      "size_mm": [
+        118.0,
+        59.217,
+        5.3
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 11433.853,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "dbbae79fb06ea0d07a4664f9243e540bc6e711340092dae22c71975656f83f79"
+    },
+    {
+      "file": "insert_v5.stl",
+      "triangles": 17436,
+      "size_mm": [
+        176.5,
+        98.0,
+        55.0
+      ],
+      "min_z_mm": 1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 168555.52,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "ca6f0443f6ebdc9e4ed2152abe1501c33a4b47c7717af25ceeb392abbaa432b6"
+    },
+    {
+      "file": "led_carrier.stl",
+      "triangles": 600,
+      "size_mm": [
+        24.0,
+        10.0,
+        5.0
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 1095.762,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "13a90305800308e0dc8e8725cf83cd2d20458eb31b4dcd4f17eaafffa2b70103"
+    },
+    {
+      "file": "nut_test.stl",
+      "triangles": 1272,
+      "size_mm": [
+        48.0,
+        12.0,
+        4.2
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 3,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 1604.492,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "32378db4e92693d1fcfeb2b34dc575d87863e79cd12e6a96d94006f2d25dbe91"
+    },
+    {
+      "file": "packing_test.stl",
+      "triangles": 1404,
+      "size_mm": [
+        119.4,
+        79.7,
+        29.4
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 21169.39,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "4bbbe5d99e1d281ee8573f1787608343c7d3638b4278a9949ce2126c895e3170"
+    },
+    {
+      "file": "power_cover.stl",
+      "triangles": 2212,
+      "size_mm": [
+        68.0,
+        42.0,
+        2.0
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 5127.361,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "662409fef79dc1bf17d386952d9e6c66ce40c01c09368047fc22b10f0316bfd3"
+    },
+    {
+      "file": "power_inlet_panel.stl",
+      "triangles": 404,
+      "size_mm": [
+        40.0,
+        16.0,
+        2.4
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 1517.805,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "259960343367fecfd13b92798da477635ba0ac6fbe8fae302a590f5b15815b32"
+    },
+    {
+      "file": "power_tray.stl",
+      "triangles": 1984,
+      "size_mm": [
+        68.0,
+        42.0,
+        17.0
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 11742.247,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "7aa8682a92a0cf06f6a851547f0beb5016aed0461f4a7ce1b4da3155f293f80a"
+    },
+    {
+      "file": "rear_carrier.stl",
+      "triangles": 4864,
+      "size_mm": [
+        119.3,
+        80.0,
+        8.4
+      ],
+      "min_z_mm": 1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 22119.692,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "bc61df673fb2ddde19b7cbfeaaa2f19ca6669fc30ff31d0259163448a88473fc"
+    },
+    {
+      "file": "ring_depth_test.stl",
+      "triangles": 5432,
+      "size_mm": [
+        128.0,
+        137.0,
+        2.99
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 4,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 31487.021,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "e1cb5ea2a70f82cc5499de8127ea4830de7239cee1d27959b6031ebc664cc8ca"
+    },
+    {
+      "file": "shelf_v5.stl",
+      "triangles": 4628,
+      "size_mm": [
+        164.5,
+        132.763,
+        97.853
+      ],
+      "min_z_mm": 1e-06,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 87096.145,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "4654ed813dc4bf9aa7ec138f57e99765e1d4d719b952f74f366c1ce335df44d9"
+    },
+    {
+      "file": "side_gauge_plus10.stl",
+      "triangles": 1612,
+      "size_mm": [
+        98.0,
+        50.8,
+        3.6
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 4942.926,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "b54f2e0db80d550fafe3c1ecf34086f7904ea6b4fbce842edb9603e11535b016"
+    },
+    {
+      "file": "zero_cover.stl",
+      "triangles": 2212,
+      "size_mm": [
+        76.0,
+        42.0,
+        2.0
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 5799.361,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "8fe3af6251aa5eb8dbf4b9e66fd579568816b72ef63acdd761220c7a6f51d368"
+    },
+    {
+      "file": "zero_tray.stl",
+      "triangles": 2980,
+      "size_mm": [
+        76.0,
+        42.0,
+        17.0
+      ],
+      "min_z_mm": 0.0,
+      "connected_components": 1,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "degenerate_triangles": 0,
+      "volume_mm3": 11918.414,
+      "fits_220mm_bed_with_10mm_brim_per_side": true,
+      "sha256": "536dac2405d92e5b60639474d2a89b5f773e14c8e13cf507c4eb951015970467"
+    }
+  ],
+  "scope": "Closed oriented mesh, nonzero triangles, expected component count and nominal bed envelope. Not a slicer, material-strength or physical-fit certification."
+}

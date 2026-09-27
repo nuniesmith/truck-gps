@@ -1,5 +1,7 @@
 # Truck GPS controller: simulation milestone
 
+> **v0.5 architecture update:** the Pico 2 WH is now planned for local hardware control; a Pi Zero 2 W will add Linux services later. This package remains a simulation and is not Pico firmware. Follow [the current implementation plan](../../docs/pi-setup.md) and [hardware decisions](../../docs/hardware-v0.5.md). Earlier Pi-only hardware suggestions below are superseded.
+
 Runnable control logic for the planned **Raspberry Pi Zero 2 W / Raspberry Pi OS Lite** installation. Requires Python **3.11 or newer** and has no runtime dependencies outside the standard library. GPIO, physical sensors, fan PWM, buttons, OLED, GPS power switching and telemetry are **not implemented**. The only supported mode is `simulate`.
 
 ## Run now, without Pi hardware
@@ -84,3 +86,4 @@ The template deliberately denies device access. Do not adapt it for live hardwar
 6. Add independent GNSS logging, Tailscale and the home map later.
 
 See [the hardware and first-boot plan](../../docs/pi-setup.md) and [the project tasks](../../docs/todo.md). The Garmin initially stays on its supplied power arrangement. v0.4 CAD awaits fit results and actual component measurements.
+
