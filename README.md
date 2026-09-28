@@ -2,13 +2,14 @@
 
 A parametric Garmin OTR620 mount for the upper cubby of a **2022 Volvo VNL 860**, printed on an **Ender 3 Neo with a 220 × 220 mm bed**.
 
-**Current revision: [v0.5 electronics prototype](src/stl/v0.5/README.md).** The measured v0.4 fit changes are retained. v0.5 adds the selected four-pin **Noctua NF-A4x20 5V PWM**, a removable **Pico 2 WH / Freenove** carrier, top vents, an ESR ring recess, modular controls and space under the shelf for a future **Pi Zero 2 W**. The files are for staged fit testing; the actual GPS and several component envelopes remain unverified.
+**Current print checkpoint: [v0.6 caliper fit tests](src/stl/v0.6/README.md).** The user confirmed a **170 mm clear inside width, 98 mm front height and 80 mm height below the rear notch**, plus cased AirPods measuring **64 x 49 x 24 mm**. Four updated coupons test these dimensions. **The v0.5 full insert and rear electronics layout need revision before printing:** its fan and carrier exceed the newly confirmed rear height. The complete electronics prototype remains archived in [v0.5](src/stl/v0.5/README.md).
 
 The controller plan is now **Pico first, Linux Zero later**. This supersedes the earlier Zero-only control plan. `src/pi/` remains a simulation-only Python package; it has no live GPIO, Pico firmware, working power distribution or telemetry integration.
 
 ## Start here
 
-- [Print queue, CAD parameters and assembly](src/stl/v0.5/README.md)
+- [Current fit coupons and measurement review](src/stl/v0.6/README.md)
+- [Previous electronics prototype and assembly](src/stl/v0.5/README.md)
 - [Hardware choices, fan variant and power architecture](docs/hardware-v0.5.md)
 - [Complete staged parts list](docs/parts-list.md)
 - [Current tasks and measurements](docs/todo.md)
@@ -19,11 +20,13 @@ The controller plan is now **Pico first, Linux Zero later**. This supersedes the
 
 ## What has been checked physically
 
-The user reports that the original front test frame fits, the 7 mm dash-bolt shank passage works, and the AirPods Pro 3 with Latercase fit snugly in the collar. The rear step needs a **measured 10 mm rise**, implemented in v0.4 and retained in v0.5. The original bolt-head pocket was too tight; the current **10.8 mm** pocket remains a trial until a sizing coupon is selected. The existing ball mount will be removed. The rubber cubby liner may be removed if needed for seating.
+The user reports that the original front test frame fits, the 7 mm dash-bolt shank passage works, and the AirPods Pro 3 with Latercase fit snugly in the collar. The earlier **rear +10 mm** correction was implemented in v0.4/v0.5, but is now superseded by the confirmed **80 mm height below the rear notch**. The v0.6 gauges use the new measurements and have not yet been physically tested. The original bolt-head pocket was too tight; the current **10.8 mm** pocket remains a trial until a sizing coupon is selected. The existing ball mount will be removed. The rubber cubby liner may be removed if needed for seating.
 
 No physical fit is claimed for the new fan, complete Pico stack, ESR recess, control pod, future Zero module, GPS bezel or angled GPS cable. Mesh validity and nominal CAD clearance are distinct from these tests.
 
 ## Mechanical layout
+
+The following describes the previous prototype; its rear packing is pending revision.
 
 | Area | v0.5 provision |
 |---|---|
@@ -54,7 +57,8 @@ The Pico sends control signals; a separate protected power circuit supplies the 
 | [v0.2](src/stl/v0.2) | Rubber pads and accessory shelf; user's first reported fit tests |
 | [v0.3](src/stl/v0.3) | ChatGPT V3.1 faceplate, M2 hardware and coupons |
 | [v0.4](src/stl/v0.4) | Measured rear +10 mm, bolt-head coupons and wired AirPods shelf |
-| [v0.5](src/stl/v0.5) | Electronics packing prototype, vents, ring recess and modular panels |
+| [v0.5](src/stl/v0.5) | Previous electronics prototype; rear height superseded |
+| [v0.6](src/stl/v0.6) | Four caliper-based fit coupons; full enclosure revision pending |
 
 Older revisions and transcripts are preserved. The `v0.3` folder contains the CAD revision named V3.1; older `src/v0.x` paths and repository names in the archive are historical.
 

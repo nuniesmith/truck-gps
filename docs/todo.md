@@ -1,11 +1,13 @@
 # Build tasks
 
-Updated 2026-09-27. [Current files](../src/stl/v0.5/README.md) · [Parts](parts-list.md) · [Hardware](hardware-v0.5.md) · [Software](pi-setup.md)
+Updated 2026-09-27. [Current fit tests](../src/stl/v0.6/README.md) · [Parts](parts-list.md) · [Hardware](hardware-v0.5.md) · [Software](pi-setup.md)
 
 ## Recorded decisions and completed design work
 
 - [x] Record successful v0.2 front-frame, dash-bolt shank and cased-AirPods collar fits.
-- [x] Apply the user's measured **rear +10 mm**, preserving front dimensions and the 7 mm shank bore.
+- [x] Archive the earlier rear +10 mm correction; superseded by the confirmed 80 mm rear clearance.
+- [x] Record 170 mm inside width, 98 mm front height, 80 mm rear height and 64 x 49 x 24 mm cased AirPods.
+- [x] Export v0.6 front, side, plan and AirPods charging fit coupons.
 - [x] Supply bolt-head sizing coupons; retain **10.8 mm as a trial**, not a confirmed head fit.
 - [x] Retain the upward-facing AirPods collar and bottom charging opening; defer wireless charging.
 - [x] Record that the ball mount will be removed and the cubby rubber can be removed if it obstructs seating.
@@ -20,15 +22,19 @@ CAD and mesh checks are recorded with the v0.5 files. They do not check off the 
 
 ## Next print batch
 
-- [ ] Print/retest `side_gauge_plus10.stl`; confirm the measured rise in the truck without forcing the rubber lip.
+- [ ] Print v0.6 `front_frame.stl`, `side_gauge.stl` and `plan_gauge.stl`; record liner state, notch depth and taper fit.
+- [ ] Print v0.6 `airpods_charge_test.stl`; compare retention with the previous snug collar.
+- [ ] Rework the full shell, fan/plenum, carrier and screw bosses below the confirmed 80 mm rear height.
+- [ ] Regenerate the matching shelf/faceplate for the 169.4 mm printed front width; do not mix widths.
+- [ ] Recheck all nominal intersections and stepped-cubby containment after integration.
 - [ ] Print `bolt_head_fit_test.stl`; record the selected pocket, real head dimensions, bolt length and thread type.
-- [ ] Test `airpods_charge_test.stl` with the cased AirPods and actual angled cable; check lid opening and removal.
+- [ ] Test the v0.6 `airpods_charge_test.stl` with the cased AirPods and actual angled cable; check lid opening and removal.
 - [ ] Test ordered M2 hardware with `nut_test.stl` and `bolt_cover_test.stl`; verify thread engagement and tip clearance.
-- [ ] Print `fan_plenum_print_test.stl` to tune bridges and verify support removal before the full insert.
+- [ ] After rear-layout revision, print the regenerated `fan_plenum_print_test.stl` to tune bridges and verify support removal before the full insert.
 - [ ] Test `fan_mount_test.stl` with the actual four-pin 5 V fan, pads, screws and washers.
-- [ ] Print `rear_carrier.stl`; confirm Freenove hole size/pattern and actual Pico/header/wire height.
+- [ ] After rear-layout revision, print the regenerated `rear_carrier.stl`; confirm Freenove hole size/pattern and actual Pico/header/wire height.
 - [ ] Test `ring_depth_test.stl`; measure ring diameter and adhesive thickness, then set recess diameter/depth.
-- [ ] Use `packing_test.stl` and `control_outline_test.stl` to check cubby and left-trim space.
+- [ ] After rear-layout revision, use a regenerated packing test and `control_outline_test.stl` to check cubby and left-trim space.
 - [ ] Check shelf and module clearance above radio controls with the accessories and cables installed.
 - [ ] Record filament, nozzle, scale, slicer profile and all measured outcomes before revising parameters.
 
