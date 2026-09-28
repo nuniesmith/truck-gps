@@ -1,3 +1,5 @@
+> **Fit dimensions superseded:** use the [v0.6 caliper fit checkpoint](../v0.6/README.md) next. Confirmed inside dimensions are 170 mm wide, 98 mm front height and 80 mm below the rear notch. This revision's full insert, carrier and packing test exceed the corrected rear clearance; do not print them as the current fit. Original documentation below is historical.
+
 # v0.5 — electronics and modular shelf prototype
 
 **Status: fit-test prototype, not the final long-print release.** The actual GPS, complete Pico/breakout stack, ESR ring and cable envelopes still need measurement. Editable source: [otr620_vnl_v0_5.scad](otr620_vnl_v0_5.scad). [Hardware decisions](../../../docs/hardware-v0.5.md) · [Parts list](../../../docs/parts-list.md)
